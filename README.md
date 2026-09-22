@@ -1,4 +1,4 @@
-# LinkedIn Job Application Automation 
+# LinkedIn Job Application Automation
 
 ## Jarvis (voice / chat control)
 
