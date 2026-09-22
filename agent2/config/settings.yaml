@@ -1,0 +1,145 @@
+# LinkedIn Job Application & Networking Agent - settings
+#
+# All numbers here are pacing / target controls for reliability and
+# workflow management. They are not intended to circumvent any platform safeguard.
+
+networking:
+  # How many HR / Talent / Recruiting profiles to process per company.
+  # The agent stops once "max" successful requests were sent.
+  # "min" = 0 means: send as many as can be found (even none), then move on
+  # and still mark the row COMPLETED. A min > 0 PAUSES the row when fewer
+  # than that many could be sent.
+  hr_min: 0
+  hr_max: 20
+
+  developer_min: 0
+  developer_max: 30
+
+  # How many people-search result pages to scan for candidates (per phase).
+  max_search_pages: 4
+
+  # If "Add a note" is not available for a profile (LinkedIn limits free notes)
+  # true  -> send the request without a note
+  # false -> skip that profile and log NOTE_UNAVAILABLE
+  send_without_note_if_unavailable: false
+
+  # Keyword lists. Matching is case-insensitive against the visible headline.
+  hr_search_terms:
+    - Recruiter
+    - Talent Acquisition
+    - Human Resources
+    - HR
+    - Talent
+    - Recruiting
+    - People Operations
+    - Talent Partner
+
+  hr_title_keywords:
+    - recruit
+    - talent
+    - human resources
+    - " hr"
+    - "hr "
+    - people operations
+    - people partner
+    - hiring
+
+  developer_search_terms:
+    - Software Engineer
+    - Software Developer
+    - Backend Engineer
+    - Frontend Engineer
+    - Full Stack Engineer
+    - SDE
+    - Developer
+
+  # Anyone whose headline contains one of these is a developer-phase candidate
+  # (software engineers first, then any technical background).
+  developer_title_keywords:
+    - software engineer
+    - software developer
+    - engineer
+    - developer
+    - sde
+    - programmer
+    - full stack
+    - fullstack
+    - backend
+    - frontend
+    - front end
+    - back end
+    - technical
+    - technology
+    - devops
+    - architect
+    - data scientist
+    - data analyst
+    - qa
+    - tech lead
+    - cto
+    - it
+
+  # Candidates are contacted in this priority order (first matching tier wins).
+  developer_priority_keywords:
+    - software engineer
+    - software developer
+    - sde
+    - full stack
+    - fullstack
+    - backend
+    - frontend
+    - developer
+    - engineer
+
+  # Headlines containing any of these are never contacted in the developer phase.
+  developer_exclude_keywords:
+    - recruit
+    - talent
+    - human resources
+    - sales
+    - marketing
+
+application:
+  # If the job is not "Easy Apply" (external site):
+  #   pause -> stop and ask the user to apply manually, then continue
+  #   skip  -> mark application_status = SKIPPED_EXTERNAL and continue to networking
+  external_apply: pause
+
+  # Answers for application form fields the agent is explicitly allowed to fill.
+  # Key = case-insensitive substring of the question label; value = answer.
+  # Fields that are already pre-filled by LinkedIn are left untouched.
+  # Any required, empty field with no matching answer causes a safe PAUSE.
+  answers: {}
+  #  "years of experience": "3"
+  #  "phone": "+1 555 000 0000"
+  #  "sponsorship": "No"
+
+delays:
+  between_profiles_min: 3
+  between_profiles_max: 6
+
+  between_actions_min: 0.5
+  between_actions_max: 1.5
+
+  between_companies_min: 15
+  between_companies_max: 30
+
+  # Max seconds to wait for a page / element before treating it as unexpected
+  page_timeout: 25
+
+browser:
+  # "chromium" uses Playwright's bundled browser. "chrome" or "msedge" use the
+  # installed system browser (often smoother with LinkedIn).
+  channel: chromium
+  headless: false
+  slow_mo_ms: 50
+  viewport_width: 1366
+  viewport_height: 850
+
+run:
+  # What to do with rows whose status is FAILED: retry | skip
+  retry_failed: skip
+  # Resume PAUSED / IN_PROGRESS rows on start: ask | yes | no
+  resume_paused: ask
+  # Stop the whole run after this many consecutive failed rows
+  max_consecutive_failures: 3

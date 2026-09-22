@@ -1,0 +1,165 @@
+# Answers the agent is allowed to fill in Easy Apply forms.
+# Fields LinkedIn has already pre-filled are never changed. A required field
+# with no matching answer pauses the run and asks you.
+# Matching is case-insensitive on the visible question text.
+
+# ---- Personal / resume data (used for name, contact, education, employer fields
+# and as knowledge for the AI fallback + Jarvis). Keep it accurate.
+personal:
+  full_name: Joel Matthew
+  first_name: Joel
+  last_name: Matthew
+  email: joelmatthew729@gmail.com
+  phone: "9876383290"
+  phone_country_code: "+91"
+  linkedin: https://www.linkedin.com/in/joel-matthew-29-dev
+  github: https://github.com/joel-298
+  portfolio: https://github.com/joel-298
+  city: Chandigarh
+  state: Chandigarh
+  country: India
+  pincode: ""            # fill if forms ask for it
+  date_of_birth: ""      # e.g. 2004-01-15 - leave empty to be asked
+  gender: ""             # leave empty to be asked
+  work_authorization_country: India
+
+work:
+  current_company: Oriental Outsourcing Consultants (P) Ltd.
+  current_title: Software Development Engineer (SDE)
+  employment_type: Full-time
+  start_date: 2025-05    # internship May 2025, SDE from May 2026
+  total_experience_years: 1
+  currently_employed: "Yes"
+
+education:
+  highest_degree: Bachelor of Engineering (B.E.)
+  field_of_study: Computer Science
+  university: Chitkara University, Rajpura, Punjab
+  graduation_year: 2026
+  start_year: 2022
+  cgpa: "8.49"
+  percentage_12th: "82.3"
+  percentage_10th: "86.8"
+
+# Short texts used for "tell us about yourself" / cover-letter style fields.
+summary: >-
+  Full-Stack Software Engineer with 1+ years of experience building web applications, currently working as an SDE on
+  live logistics systems. Built an associate program that has processed over $1.15M in order value across 1,500+ orders,
+  cut an order page load from 2 minutes to ~1 second, and shipped features end-to-end across quote/order management,
+  real-time chat (Firebase/WebRTC), 2FA and role-based access. Skills: Java, JavaScript, React.js, Node.js, Express.js,
+  Laravel, MongoDB, MySQL, REST API design (120+ APIs), MVC, microservices. 200+ LeetCode problems solved. Immediate joiner.
+
+profile:
+  # "How many years of experience do you have with <tech>?"  (tech from tech_keywords)
+  experience_years_with_tech: 1
+  # "How many years of (total/work/professional) experience do you have?"
+  total_experience_years: 1
+
+  # "Where are you currently located?" / "Current location" / "City"
+  location: Chandigarh
+
+  # "Are you willing to relocate?" / "comfortable with ... location" etc.
+  willing_to_relocate: "Yes"
+
+  # Notice period / joining: text fields get notice_period, number fields get
+  # notice_period_days, dropdowns/radios pick the closest option (Immediate, 0, <15 days...).
+  notice_period: Immediate joiner
+  notice_period_days: 0
+
+  # Salary. Per-year amount in INR; the agent converts to LPA / per month
+  # when the question asks for that, e.g. "Expected CTC (in LPA)" -> 7
+  current_salary_per_year: 700000
+  expected_salary_per_year: 700000
+
+  # Generic Yes/No questions (authorised to work, can start immediately,
+  # comfortable with shifts, have a degree, ...): answer Yes when the question
+  # matches any of these words and the options are Yes/No.
+  yes_to:
+    - authorized
+    - authorised
+    - eligible
+    - legally
+    - comfortable
+    - available
+    - immediate
+    - bachelor
+    - degree
+    - background check
+    - drug test
+    - immediately
+    - join immediately
+
+tech_keywords:
+  - Java
+  - HTML
+  - CSS
+  - JavaScript
+  - React
+  - React.js
+  - jQuery
+  - Node
+  - Node.js
+  - Express
+  - Express.js
+  - Laravel
+  - PHP
+  - Socket.io
+  - WebRTC
+  - MongoDB
+  - MySQL
+  - SQL
+  - System Design
+  - REST
+  - RESTful
+  - API
+  - MVC
+  - Microservices
+  - Git
+  - GitHub
+  - CI/CD
+  - FTP
+  - SSH
+  - Cursor
+  - Claude
+  - LeetCode
+  - Data Structures
+  - Algorithms
+  - Full Stack
+  - Backend
+  - Frontend
+  - Software Development
+  - Web Development
+
+# The full resume, given to the AI fallback and to Jarvis as knowledge.
+resume_text: |
+  JOEL MATTHEW - joelmatthew729@gmail.com | +91 9876383290 | linkedin.com/in/joel-matthew-29-dev | github.com/joel-298
+  SUMMARY: Full-Stack Software Engineer with 1+ years of experience building web applications. Currently working as an SDE
+  on live logistics systems. Built a program that has processed over $1.15M in order value. Solved 200+ LeetCode problems.
+  EXPERIENCE: Oriental Outsourcing Consultants (P) Ltd. - SDE (May 2026 - Present); SDE Intern (May 2025 - May 2026), on-site.
+  - Logistics Management Platform: quote/order management, associate tracking, tip module, warehouse TV dashboard;
+    built the Associate Program from scratch ($1.15M+ order value, 1,500+ orders); fixed order-page timeout (2 min -> ~1 s);
+    migrated QuickBooks integration to the official SDK; CC-email system-wide; refactored codebase to best practices.
+  - Delivery Management Platform: closed IDOR vulnerabilities (encrypted IDs + authorization middleware); Firebase real-time
+    chat replacing MySQL messaging; 2FA with OTP; new "Office" role with middleware; async job processing with failure alerts;
+    upgraded legacy app to MVC; optimized schema with migrations and indexes.
+  - Business Management Platform: FIFO inventory/queue management, pricing logic, structural changes.
+  PROJECTS: Urban Cart (multi-panel e-commerce: React, Node, Express, MongoDB); Chatz (real-time chat + video calling:
+  React, Node, Express, MongoDB, Socket.io, WebRTC).
+  EDUCATION: Chitkara University, Rajpura - B.E. Computer Science, CGPA 8.49 (2022-2026); GMSSS Sec 33 Chandigarh - XII CBSE 82.3%
+  (2021-22); St. Stephen's School, Togan - X CBSE 86.8% (2019-20).
+  SKILLS: Java, HTML, CSS, JavaScript, React.js, jQuery, Node.js, Express.js, Laravel (PHP), Socket.io, WebRTC, MongoDB,
+  MySQL/SQL, System Design, RESTful API design (120+ APIs), MVC, Microservices, Git/GitHub, CI/CD, FTP, SSH, Cursor, Claude.
+  OTHER: Location Chandigarh, India. Notice period: immediate joiner (0 days). Current CTC 7 LPA, expected 7 LPA. Willing to relocate.
+
+# AI fallback: when a REQUIRED question is not covered by any rule above, ask
+# Claude (via your Claude Code login) to answer it from resume_text. It only
+# answers when the information is in the resume; otherwise the run pauses.
+ai_fallback: true
+
+# Extra rules checked FIRST (before the profile logic). First match wins.
+# match = list of substrings of the question; answer = text / option label.
+extra_rules: []
+#  - match: ["notice period"]
+#    answer: "30"
+#  - match: ["linkedin profile"]
+#    answer: "https://www.linkedin.com/in/your-handle/"

@@ -1,0 +1,118 @@
+# Agent 1 - LinkedIn job finder. Appends PENDING rows to agent2/data/jobs.xlsx.
+
+search:
+  keywords:                # one LinkedIn search per keyword
+    - Software Developer
+    - Associate Software Developer
+    - Software Engineer
+    - Node.js Developer
+    - Java Developer
+    - Full Stack Developer
+    - MERN Stack Developer
+    - Backend Developer
+  location: India
+  posted_within_hours: 24  # LinkedIn "Past 24 hours"
+  easy_apply_only: true    # excludes jobs that apply on a company website
+  # LinkedIn experience levels: 1 Internship, 2 Entry level, 3 Associate,
+  # 4 Mid-Senior, 5 Director, 6 Executive. Empty list = no filter.
+  experience_levels: [2, 3]
+  pages_per_keyword: 2     # 25 results per page
+  max_new_jobs: 20         # stop after adding this many rows in one run
+
+# Job titles containing any of these words are skipped.
+exclude_title_words:
+  - senior
+  - sr.
+  - sr
+  - lead
+  - principal
+  - architect
+  - manager
+  - head
+  - director
+  - vp
+  - staff
+  - intern
+  - internship
+  - trainee
+  - .net
+  - dotnet
+  - android
+  - ios
+  - flutter
+  - salesforce
+  - sap
+  - devops
+  - data scientist
+  - data engineer
+  - qa
+  - test
+  - sdet
+  - python
+  - django
+  - wordpress
+  - c++
+  - golang
+  - ruby
+  - rust
+  - scala
+  - erpnext
+  - ai engineer
+  - ml engineer
+  - jsb
+  - shopify
+  - mobile
+  - react native
+  - php
+  - laravel
+  - magento
+  - drupal
+
+# Description text must contain at least one of these (case-insensitive) or
+# the job is skipped as not relevant. Empty list = accept everything.
+require_any_in_description:
+  - java
+  - node
+  - react
+  - javascript
+  - mern
+  - mongodb
+  - express
+  - full stack
+  - fullstack
+  - backend
+  - back-end
+  - frontend
+  - front-end
+  - typescript
+  - spring
+
+# Resume decision: the description is scored by keyword occurrences.
+# Title containing "java" or java_score > mern_score -> java resume, else MERN.
+resume:
+  java_name: Joel_Matthew_Java_2
+  mern_name: Joel_Matthew_Mern_3
+  java_keywords: [java, spring, spring boot, springboot, hibernate, j2ee, jsp, servlet, jpa, maven, gradle, microservices]
+  mern_keywords: [node, node.js, nodejs, react, react.js, reactjs, mongodb, mongo, express, mern, javascript, typescript, next.js, nextjs, nest.js, nestjs, angular, vue]
+
+# Connection notes written into the new rows (max 300 characters each).
+# hr    -> hr_message_<type>          developer -> developer_message_<type>
+messages:
+  java:
+    hr: |-
+      Hi, myself Joel a Full Stack Developer with 1+ year of experience working on multiple live projects, building modules, APIs & resolving production issues. I’d love to contribute my skills to your team :)
+
+      Resume: https://drive.google.com/file/d/1wwXG81VGCseD0qxsuENCMEm5ug7VChXE/view?usp=sharing
+    developer: |-
+      Hi, myself Joel a Full Stack Developer with 1+ year of experience on multiple live projects, building modules, APIs & resolving production issues. I’d be grateful if you could share my CV with your HR.
+
+      Resume: https://drive.google.com/file/d/1wwXG81VGCseD0qxsuENCMEm5ug7VChXE/view?usp=sharing
+  mern:
+    hr: |-
+      Hi, myself Joel a Full Stack Developer with 1+ year of experience working on multiple live projects, building modules, APIs & resolving production issues. I’d love to contribute my skills to your team :)
+
+      Resume: https://drive.google.com/file/d/1gw9ks1MzVm2DtqUL4lxSI1bW05iTAVp6/view?usp=sharing
+    developer: |-
+      Hi, myself Joel a Full Stack Developer with 1+ year of experience on multiple live projects, building modules, APIs & resolving production issues. I’d be grateful if you could share my CV with your HR.
+
+      Resume: https://drive.google.com/file/d/1gw9ks1MzVm2DtqUL4lxSI1bW05iTAVp6/view?usp=sharing

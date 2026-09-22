@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+agent2/browser_profile/
+agent2/data/agent.db
+agent2/data/jobs*.xlsx
+agent2/logs/
+agent2/screenshots/
